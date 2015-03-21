@@ -14,9 +14,7 @@
         <h3>${message:greeting}</h3>
         <p>The current time is: <strong>${currentTime}</strong></p>
         <p>
-            This is a template for a simple marketing or informational website. It includes a large callout called
-            the hero unit and three supporting pieces of content. Use it as a starting point to create something
-            more unique.
+            <t:pagelink page="DodavanjeSoba">Dodajte sobu</t:pagelink>
         </p>
         <p><t:actionlink t:id="learnmore" class="btn btn-primary btn-large">Learn more &raquo;</t:actionlink></p>
     </div>

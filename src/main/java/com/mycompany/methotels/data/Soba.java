@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.methotels.data;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import org.apache.tapestry5.ioc.annotations.Inject;
+
+/**
+ *
+ * @author Nikola Bodrozic 2400
+ */
 
 public class Soba {
 
