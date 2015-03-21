@@ -8,39 +8,24 @@
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="hero-unit">
         <p>
-            <img src="${asset:context:images/tapestry.png}"
+            <img src="${asset:context:images/Hotel-Sign.jpg}"
                  alt="${message:greeting}" title="${message:greeting}" />
         </p>
         <h3>${message:greeting}</h3>
-        <p>The current time is: <strong>${currentTime}</strong></p>
+        <p>Trenutno Vreme je: <strong>${currentTime}</strong></p>
         <p>
             <t:pagelink page="DodavanjeSoba">Dodajte sobu</t:pagelink>
         </p>
-        <p><t:actionlink t:id="learnmore" class="btn btn-primary btn-large">Learn more &raquo;</t:actionlink></p>
+        <p><t:actionlink t:id="learnmore" class="btn btn-primary btn-large">Saznajte... &raquo;</t:actionlink></p>
     </div>
 
     <!-- Example row of columns -->
     <div class="row">
-        <div class="span4">
-            <h2>Normal link</h2>
-            <p>Clink the bottom link and the page refresh with event <code>complete</code></p>
-            <p><t:eventlink event="complete" class="btn" >Complete&raquo;</t:eventlink></p>
+        
+        <div class="span12">
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
         </div>
-        <t:zone t:id="middlezone" class="span4">
-
-        </t:zone>
-        <div class="span4">
-            <h2>Ajax link</h2>
-            <p>Click the bottom link to update just the middle column with Ajax call with event <code>ajax</code></p>
-            <p><t:eventlink event="ajax" zone="middlezone" class="btn" >Ajax&raquo;</t:eventlink></p>
-        </div>
+                
     </div>
-
-    <t:block t:id="block">
-        <h2>Ajax updated</h2>
-        <p>I'v been updated through AJAX call</p>
-        <p>The current time is: <strong>${currentTime}</strong></p>
-        <t:alerts />
-    </t:block>
-
 </html>

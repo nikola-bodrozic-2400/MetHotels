@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="span12">
-            <p>About MetHotels application ...</p>
+            <p>O MetHotels Aplikaciji</p>
         </div>
     </div>
 
@@ -12,9 +12,7 @@
         <div class="row">
             <div class="span12">
                 <p>
-                    To learn more go to
-                    <a href="http://tapestry.apache.org">Tapestry home</a>
-                    and start typing...
+                    Ovo je rad za Web Sisteme baziran Java Framework-u
                 </p>
             </div>
         </div>

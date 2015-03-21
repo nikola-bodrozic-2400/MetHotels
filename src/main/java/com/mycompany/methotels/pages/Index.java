@@ -34,9 +34,6 @@ public class Index
 	@InjectPage
 	private About about;
 
-	@Inject
-	private Block block;
-
 
 	// Handle call with an unwanted context
 	Object onActivate(EventContext eventContext)
@@ -59,15 +56,6 @@ public class Index
 	{
 		logger.info("Complete call on Index page");
 	}
-
-	@Log
-	void onAjax()
-	{
-		logger.info("Ajax call on Index page");
-
-		ajaxResponseRenderer.addRender("middlezone", block);
-	}
-
 
 	public Date getCurrentTime()
 	{
