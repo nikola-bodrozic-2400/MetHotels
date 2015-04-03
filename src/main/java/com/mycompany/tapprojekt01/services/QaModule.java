@@ -1,4 +1,4 @@
-package com.mycompany.methotels.services;
+package com.mycompany.tapprojekt01.services;
 
 import java.io.IOException;
 

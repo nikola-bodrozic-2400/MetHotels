@@ -1,4 +1,4 @@
-package com.mycompany.methotels.pages;
+package com.mycompany.tapprojekt01.pages;
 
 
 import org.apache.tapestry5.Block;
@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import java.util.Date;
 
 /**
- * Start page of application MetHotels.
+ * Start page of application TapProjekt01.
  */
 public class Index
 {
@@ -33,6 +33,9 @@ public class Index
 
 	@InjectPage
 	private About about;
+
+	@Inject
+	private Block block;
 
 
 	// Handle call with an unwanted context
@@ -56,6 +59,15 @@ public class Index
 	{
 		logger.info("Complete call on Index page");
 	}
+
+	@Log
+	void onAjax()
+	{
+		logger.info("Ajax call on Index page");
+
+		ajaxResponseRenderer.addRender("middlezone", block);
+	}
+
 
 	public Date getCurrentTime()
 	{

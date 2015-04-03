@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="MetHotels Application Test Suite" annotations="1.5">
+<suite name="TapProjekt01 Application Test Suite" annotations="1.5">
     <test name="Unit Tests">
         <packages>
-            <package name="com.mycompany.methotels"/>
+            <package name="com.mycompany.tapprojekt01"/>
         </packages>
     </test>
 </suite>

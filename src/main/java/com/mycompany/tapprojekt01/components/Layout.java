@@ -1,4 +1,4 @@
-package com.mycompany.methotels.components;
+package com.mycompany.tapprojekt01.components;
 
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.alerts.AlertManager;
@@ -46,8 +46,7 @@ public class Layout
 
 	public String[] getPageNames()
 	{
-		//return new String[]{"Index", "About", "Contact"};
-                return new String[]{"Index", "DodavanjeSoba"};
-	}      
+            return new String[]{"Index", "DodavanjeSoba"};
+	}
 
 }

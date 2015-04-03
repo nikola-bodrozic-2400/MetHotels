@@ -1,4 +1,4 @@
-description = "MetHotels application"
+description = "TapProjekt01 application"
 
 apply plugin: "war"
 apply plugin: "java"
@@ -49,26 +49,26 @@ configurations {
 
 sourceSets {
     main {
-        compileClasspath += [configurations.provided]
+        compileClasspath += configurations.provided
         // To give the same path as IDEA has
-        // output.resourcesDir = 'build/production/MetHotels'
-        // output.classesDir = 'build/production/MetHotels'
+        // output.resourcesDir = 'build/production/TapProjekt01'
+        // output.classesDir = 'build/production/TapProjekt01'
     }
     test {
-        compileClasspath += [configurations.provided]
-        runtimeClasspath += [configurations.provided]
+        compileClasspath += configurations.provided
+        runtimeClasspath += configurations.provided
     }
 }
 
 dependencies {
 
-    compile "org.apache.tapestry:tapestry-core:5.4-beta-24"
+    compile "org.apache.tapestry:tapestry-core:5.4-beta-6"
 
     // Uncomment this to add support for file uploads:
-    // compile "org.apache.tapestry:tapestry-upload:5.4-beta-24"
+    // compile "org.apache.tapestry:tapestry-upload:5.4-beta-6"
 
     // Uncomment this to add support resource minification and runtime compilation:
-    // compile "org.apache.tapestry:tapestry-wro4j:5.4-beta-24"
+    // compile "org.apache.tapestry:tapestry-wro4j:5.4-beta-6"
 
     // Log implementation choose one:
     // Log4j 1.x

@@ -1,4 +1,4 @@
-package com.mycompany.methotels.pages;
+package com.mycompany.tapprojekt01.pages;
 
 import org.apache.tapestry5.annotations.PageActivationContext;
 

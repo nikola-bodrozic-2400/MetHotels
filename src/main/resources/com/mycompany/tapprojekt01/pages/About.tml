@@ -1,10 +1,10 @@
-<html t:type="layout" title="About MetHotels"
+<html t:type="layout" title="About TapProjekt01"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
     <div class="row">
         <div class="span12">
-            <p>O MetHotels Aplikaciji</p>
+            <p>About TapProjekt01 application ...</p>
         </div>
     </div>
 
@@ -12,7 +12,9 @@
         <div class="row">
             <div class="span12">
                 <p>
-                    Ovo je rad za Web Sisteme baziran Java Framework-u
+                    To learn more go to
+                    <a href="http://tapestry.apache.org">Tapestry home</a>
+                    and start typing...
                 </p>
             </div>
         </div>
