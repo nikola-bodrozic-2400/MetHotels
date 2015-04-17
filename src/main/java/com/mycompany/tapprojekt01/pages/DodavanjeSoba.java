@@ -11,7 +11,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author student
+ * @author Nikola
  */
 public class DodavanjeSoba {
 
