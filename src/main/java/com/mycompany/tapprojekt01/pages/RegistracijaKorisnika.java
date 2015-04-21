@@ -1,38 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.tapprojekt01.pages;
 
-
 import com.mycompany.tapprojekt.dao.UserDao;
+import com.mycompany.tapprojekt01.data.Role;
 import com.mycompany.tapprojekt01.entities.User;
-import org.apache.tapestry5.alerts.AlertManager;
+import com.mycompany.tapprojekt01.pages.Index;
+import com.mycompany.tapprojekt01.services.ProtectedPage;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
-import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.components.PasswordField;
-import org.apache.tapestry5.corelib.components.TextField;
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.slf4j.Logger;
 
-public class Login {
-
-    @Inject
-    private UserDao userDao;
+/**
+ *
+ * @author Nikola
+ */
+@ProtectedPage
+@RolesAllowed(value={"Korisnik"})
+public class RegistracijaKorisnika {
     @Property
-    private User userLogin;
+    private User userReg;
     @SessionState
     private User loggedInUser;
+    @Inject
+    private UserDao userDao;
     @Component
     private BeanEditForm form;
-
-    Object onActivate() {
-        if (loggedInUser.getEmail() != null) {
-            return Index.class;
-        }
-        return null;
-    }
 
     public String getMD5Hash(String yourString) {
         try {
@@ -48,18 +48,18 @@ public class Login {
         }
     }
 
+    @CommitAfter
     Object onSuccess() {
-        String password = getMD5Hash(userLogin.getSifra());
-        System.out.println(password);
-        User u = userDao.checkUser(userLogin.getEmail(), password);
-        if (u != null) {
+        if (!userDao.checkIfEmailExists(userReg.getEmail())) {
+            String unhashPassword = userReg.getSifra();
+            userReg.setSifra(getMD5Hash(unhashPassword));
+            userReg.setRola(Role.Korisnik);
+            User u = userDao.registerUser(userReg);
             loggedInUser = u;
-            System.out.println("Logovan");
             return Index.class;
         } else {
-            form.recordError("Uneli ste pogrešne parametre");
-            System.out.println("losi parametri");
+            form.recordError("Email koji ste uneli vec postoji");
             return null;
         }
-    }
+    }    
 }

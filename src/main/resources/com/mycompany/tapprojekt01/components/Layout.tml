@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-        >
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
 <head>
     <meta charset="utf-8" />
     <title>${title}</title>
@@ -48,9 +47,14 @@
                 </t:loop>
             </ul>
             <span class="navbar-right">
-                <li>
+                <t:if test="!loggedIn">
+                 <li>
                     <t:pagelink page="login" class="btn btn-default navbar-btn">Sign in</t:pagelink>
-               	</li>
+                 </li>
+                </t:if>
+                <t:if test="loggedIn">
+                 <t:actionlink t:id="logout" class="btn btn-default navbar-btn">Logout</t:actionlink>
+                </t:if>
             </span>
 
         </div><!--/.nav-collapse -->

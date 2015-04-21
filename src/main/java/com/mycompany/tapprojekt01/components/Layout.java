@@ -1,5 +1,6 @@
 package com.mycompany.tapprojekt01.components;
 
+import com.mycompany.tapprojekt01.entities.User;
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.*;
@@ -14,39 +15,48 @@ import org.apache.tapestry5.SymbolConstants;
 /**
  * Layout component for pages of application test-project.
  */
-@Import(module="bootstrap/collapse")
-public class Layout
-{
-	@Inject
-	private ComponentResources resources;
+@Import(module = "bootstrap/collapse")
+public class Layout {
 
-	/**
-	 * The page title, for the <title> element and the <h1> element.
-	 */
-	@Property
-	@Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
-	private String title;
+    @Inject
+    private ComponentResources resources;
+    @SessionState
+    private User loggedInUser;
+    /**
+     * The page title, for the <title> element and the <h1> element.
+     */
+    @Property
+    @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
+    private String title;
 
-	@Property
-	private String pageName;
+    @Property
+    private String pageName;
 
-	@Property
-	@Inject
-	@Symbol(SymbolConstants.APPLICATION_VERSION)
-	private String appVersion;
+    @Property
+    @Inject
+    @Symbol(SymbolConstants.APPLICATION_VERSION)
+    private String appVersion;
 
+    public String getClassForPageName() {
+        return resources.getPageName().equalsIgnoreCase(pageName)
+                ? "active"
+                : null;
+    }
 
+    public String[] getPageNames() {
+        return new String[]{"Index", "DodavanjeSoba", "RegistracijaKorisnika"};
+    }
 
-	public String getClassForPageName()
-	{
-		return resources.getPageName().equalsIgnoreCase(pageName)
-				? "active"
-				: null;
-	}
+    // za login i logout
+    public boolean getLoggedIn() {
+        if (loggedInUser.getEmail() != null) {
+            return true;
+        }
+        return false;
+    }
 
-	public String[] getPageNames()
-	{
-            return new String[]{"Index", "DodavanjeSoba"};
-	}
+    public void onActionFromLogout() {
+        loggedInUser = null;
+    }
 
 }

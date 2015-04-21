@@ -5,12 +5,15 @@
  */
 package com.mycompany.tapprojekt01.entities;
 
+import com.mycompany.tapprojekt01.data.Role;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,8 +42,9 @@ public class User implements Serializable {
     private String email;
     @Column(name = "SIFRA")
     private String sifra;
+    @Enumerated(EnumType.STRING)
     @Column(name = "ROLA")
-    private String rola;
+    private Role rola;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "useId")
     private List<Klijent> klijentList;
 
@@ -76,11 +80,11 @@ public class User implements Serializable {
         this.sifra = sifra;
     }
 
-    public String getRola() {
+    public Role getRola() {
         return rola;
     }
 
-    public void setRola(String rola) {
+    public void setRola(Role rola) {
         this.rola = rola;
     }
 

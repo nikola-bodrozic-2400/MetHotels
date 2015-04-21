@@ -108,6 +108,11 @@
             <artifactId>javax.persistence</artifactId>
             <version>2.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.2</version>
+        </dependency>        
     </dependencies>
     <build>
         <finalName>TapProjekt01</finalName>
@@ -177,4 +182,5 @@
         <slf4j-release-version>1.7.7</slf4j-release-version>
 
     </properties>
+    <description>ovo ide na github</description>
 </project>
