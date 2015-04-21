@@ -2,6 +2,8 @@ package com.mycompany.tapprojekt01.services;
 
 import com.mycompany.tapprojekt.dao.SobaDao;
 import com.mycompany.tapprojekt.dao.SobaDaoImpl;
+import com.mycompany.tapprojekt.dao.UserDao;
+import com.mycompany.tapprojekt.dao.UserDaoImpl;
 import java.io.IOException;
 
 import org.apache.tapestry5.*;
@@ -27,6 +29,7 @@ public class AppModule
     public static void bind(ServiceBinder binder)
     {
         binder.bind(SobaDao.class, SobaDaoImpl.class);
+        binder.bind(UserDao.class, UserDaoImpl.class);
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
         // Make bind() calls on the binder object to define most IoC services.

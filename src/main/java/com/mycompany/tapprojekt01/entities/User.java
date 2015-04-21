@@ -22,7 +22,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
- * @author student
+ * @author student 
  */
 @Entity
 @Table(name = "user")
