@@ -1,0 +1,12 @@
+<html t:type="layout" title="Admin panel"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p>
+        <t:pagelink page="RegistracijaKorisnika">Registracija Korisnika</t:pagelink>
+    </p>
+    <p>
+        <t:pagelink page="DodavanjeSoba">Dodavanje Soba</t:pagelink>    
+    </p>
+
+</html>

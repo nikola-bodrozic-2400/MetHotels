@@ -2,8 +2,10 @@ package com.mycompany.tapprojekt01.pages;
 
 import com.mycompany.tapprojekt.dao.SobaDao;
 import com.mycompany.tapprojekt01.entities.Soba;
+import com.mycompany.tapprojekt01.services.ProtectedPage;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -13,6 +15,8 @@ import org.hibernate.Session;
  *
  * @author Nikola
  */
+@ProtectedPage
+@RolesAllowed(value={"Korisnik"})
 public class DodavanjeSoba {
 
      @Property
