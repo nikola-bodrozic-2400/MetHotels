@@ -44,7 +44,7 @@ public class Layout {
     }
 
     public String[] getPageNames() {
-        return new String[]{"Index", "AdminPanel"};
+        return new String[]{"Index","About" , "AdminPanel"};
     }
 
     // za login i logout

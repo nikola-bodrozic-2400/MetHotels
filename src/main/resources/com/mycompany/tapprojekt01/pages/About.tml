@@ -19,5 +19,6 @@
             </div>
         </div>
     </t:if>
-
+    <p>komponenta sa atributom</p>
+ <t:PDVComp cena="100"/>
 </html>
