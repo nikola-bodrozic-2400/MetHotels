@@ -11,6 +11,7 @@ import com.mycompany.tapprojekt01.services.ProtectedPage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -20,33 +21,42 @@ import org.hibernate.Session;
  *
  * @author student
  */
-
 public class DodavanjeGosti {
-@Property
- private Gosti gost;
- @Property
- private Gosti onegost;
- @Inject
- private GostiDao gostDao;
 
- @Property
- private List<Gosti> gosti;
- void onActivate() {
- if (gosti == null) {
- gosti = new ArrayList<Gosti>();
- }
- gosti = gostDao.getListaSvihGost();
- }
- @CommitAfter
- Object onSuccess() {
- gostDao.dodajGost(gost);
- return this;
- }
- @CommitAfter
- Object onActionFromDelete(int id)
- {
- gostDao.obrisiGost(id);
- return this;
- }
+    @Property
+    @Persist
+    private Gosti gost;
+    @Property
+    private Gosti onegost;
+    @Inject
+    private GostiDao gostiDao;
+
+    @Property
+    private List<Gosti> gosti;
+
+    void onActivate() {
+        if (gosti == null) {
+            gosti = new ArrayList<Gosti>();
+        }
+        gosti = gostiDao.getListaSvihGost();
+    }
+
+    @CommitAfter
+    Object onSuccess() {
+        gostiDao.dodajIliUpdatujGost(gost);
+        gost = new Gosti();
+        return this;
+    }
+
+    @CommitAfter
+    Object onActionFromEdit(Gosti gosti) {
+        gost = gosti;
+        return this;
+    }
+
+    @CommitAfter
+    Object onActionFromDelete(int id) {
+        gostiDao.obrisiGost(id);
+        return this;
+    }
 }
-

@@ -15,7 +15,8 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author hammond
  */
-public class GostiDaoImpl implements GostiDao{
+public class GostiDaoImpl implements GostiDao {
+
     @Inject
     private Session session;
 
@@ -39,5 +40,10 @@ public class GostiDaoImpl implements GostiDao{
     public void obrisiGost(Integer id) {
         Gosti gost = (Gosti) session.createCriteria(Gosti.class).add(Restrictions.eq("id", id)).uniqueResult();
         session.delete(gost);
-    }    
+    }
+
+    @Override
+    public void dodajIliUpdatujGost(Gosti gost) {
+        session.merge(gost);
+    }
 }
