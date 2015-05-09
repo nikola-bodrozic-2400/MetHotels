@@ -25,13 +25,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 @Table(name = "gosti")
 @NamedQueries({
     @NamedQuery(name = "Gosti.findAll", query = "SELECT g FROM Gosti g")})
-public class Gosti implements Serializable {
+public class Gosti extends AbstractEntity {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @Basic(optional = false)
     @Column(name = "gost_ime")
     private String gostIme;
@@ -41,7 +36,7 @@ public class Gosti implements Serializable {
     @Basic(optional = false)
     @Column(name = "passport_num")
     private int passportNum;
-    
+   
     @Inject
     public Gosti() {
     }
@@ -113,5 +108,4 @@ public class Gosti implements Serializable {
     public String toString() {
         return "com.mycompany.tapprojekt01.entities.Gosti[ id=" + id + " ]";
     }
-    
 }

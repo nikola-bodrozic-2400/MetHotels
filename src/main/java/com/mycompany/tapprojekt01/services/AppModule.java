@@ -1,5 +1,7 @@
 package com.mycompany.tapprojekt01.services;
 
+import com.mycompany.tapprojekt.dao.GenericDao;
+import com.mycompany.tapprojekt.dao.GenericDaoImpl;
 import com.mycompany.tapprojekt.dao.GostiDao;
 import com.mycompany.tapprojekt.dao.GostiDaoImpl;
 import com.mycompany.tapprojekt.dao.SobaDao;
@@ -33,6 +35,7 @@ public class AppModule {
         binder.bind(SobaDao.class, SobaDaoImpl.class);
         binder.bind(UserDao.class, UserDaoImpl.class);
         binder.bind(GostiDao.class, GostiDaoImpl.class);
+        binder.bind(GenericDao.class,GenericDaoImpl.class);
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
         // Make bind() calls on the binder object to define most IoC services.
