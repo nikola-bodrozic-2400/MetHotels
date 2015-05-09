@@ -1,15 +1,16 @@
 <html t:type="layout" title="TapestryHibernateDemo Index"
-      t:sidebarTitle="Framework Version"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-    <t:beaneditform object="gost" exclude="id" >
-    </t:beaneditform>
-    <t:grid source="gosti" exclude="id" add="edit,delete" row="onegost">
-        <p:editCell>
-            <t:actionlink t:id="edit" context="onegost">Edit</t:actionlink>
-        </p:editCell>
-        <p:deleteCell>
-            <t:actionlink t:id="delete" context="onegost.id">Delete</t:actionlink>
-        </p:deleteCell>
-    </t:grid>
+ t:sidebarTitle="Framework Version"
+ xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+ xmlns:p="tapestry:parameter">
+ <t:beaneditform object="gost" exclude="id" >
+ </t:beaneditform>
+ <t:jquery.datatable source="gosti" exclude="id" add="edit,delete" t:options="options"
+row="onegost">
+ <p:editCell>
+ <t:actionlink t:id="edit" context="onegost">Edit</t:actionlink>
+ </p:editCell>
+ <p:deleteCell>
+ <t:actionlink t:id="delete" context="onegost.id">Delete</t:actionlink>
+ </p:deleteCell>
+ </t:jquery.datatable>
 </html>

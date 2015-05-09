@@ -6,6 +6,7 @@
 package com.mycompany.tapprojekt01.pages;
 
 import com.mycompany.tapprojekt.dao.GostiDao;
+import com.mycompany.tapprojekt01.entities.Drzave;
 import com.mycompany.tapprojekt01.entities.Gosti;
 import com.mycompany.tapprojekt01.services.ProtectedPage;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.json.JSONObject;
 import org.hibernate.Session;
 
 /**
@@ -22,7 +24,6 @@ import org.hibernate.Session;
  * @author student
  */
 public class DodavanjeGosti {
-
     @Property
     @Persist
     private Gosti gost;
@@ -30,7 +31,6 @@ public class DodavanjeGosti {
     private Gosti onegost;
     @Inject
     private GostiDao gostiDao;
-
     @Property
     private List<Gosti> gosti;
 
@@ -49,14 +49,22 @@ public class DodavanjeGosti {
     }
 
     @CommitAfter
+    Object onActionFromDelete(int id) {
+        gostiDao.obrisiGost(id);
+        return this;
+    }
+
+    @CommitAfter
     Object onActionFromEdit(Gosti gosti) {
         gost = gosti;
         return this;
     }
 
-    @CommitAfter
-    Object onActionFromDelete(int id) {
-        gostiDao.obrisiGost(id);
-        return this;
+    public JSONObject getOptions() {
+        JSONObject json = new JSONObject();
+        json.put("bJQueryUI", "true");
+        json.put("bStateSave", true);
+        json.put("bAutoWidth", true);
+        return json;
     }
 }
