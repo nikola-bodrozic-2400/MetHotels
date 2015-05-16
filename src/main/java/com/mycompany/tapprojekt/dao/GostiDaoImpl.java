@@ -43,7 +43,8 @@ public class GostiDaoImpl implements GostiDao {
     }
 
     @Override
-    public void dodajIliUpdatujGost(Gosti gost) {
-        session.merge(gost);
+    public Gosti dodajIliUpdatujGost(Gosti gost) {
+        //session.merge(gost);
+        return (Gosti) session.merge(gost);
     }
 }

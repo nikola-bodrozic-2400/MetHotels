@@ -17,5 +17,5 @@ public interface GostiDao {
     public Gosti getGostById(Integer id);
     public void dodajGost(Gosti gost);
     public void obrisiGost(Integer id);    
-    public void dodajIliUpdatujGost(Gosti gost);
+    public Gosti dodajIliUpdatujGost(Gosti gost);
 }
