@@ -24,7 +24,7 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="span4">
-            <h2>Normal link</h2>
+            <h2>Klasican link</h2>
             <p>Clink the bottom link and the page refresh with event <code>complete</code></p>
             <p><t:eventlink event="complete" class="btn" >Complete&raquo;</t:eventlink></p>
         </div>
