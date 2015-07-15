@@ -15,8 +15,8 @@ import org.hibernate.Session;
  *
  * @author Nikola
  */
-@ProtectedPage
-@RolesAllowed(value={"Korisnik"})
+//@ProtectedPage
+//@RolesAllowed(value={"Korisnik"})
 public class DodavanjeSoba {
 
      @Property
