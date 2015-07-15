@@ -44,7 +44,15 @@ public class Layout {
     }
 
     public String[] getPageNames() {
-        return new String[]{"Index", "About", "DodavanjeGosti", "AdminPanel"};
+        return new String[]{
+            "Index", 
+            "AjaxPretraga",
+            "JqueryPag",
+            "DodavanjeSoba",
+            "About", 
+            "DodavanjeGosti", 
+            "AdminPanel"
+        };
     }
 
     // za login i logout

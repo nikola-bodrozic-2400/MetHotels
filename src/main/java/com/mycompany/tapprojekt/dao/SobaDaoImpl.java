@@ -5,10 +5,14 @@
  */
 package com.mycompany.tapprojekt.dao;
 
+
 import com.mycompany.tapprojekt01.entities.Soba;
 import java.util.List;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -46,4 +50,20 @@ public class SobaDaoImpl implements SobaDao {
     public List<Soba> getListaSobaPoImenu(String ime) {
         return session.createCriteria(Soba.class).add(Restrictions.ilike("imeSobe", ime + "%")).list();
     }
+
+    @Override
+    public List<Soba> loadActiveFromTo(int from) {
+        int page = (from - 1) * 20;
+        List<Soba> lista
+                = session.createCriteria(Soba.class).setFirstResult(page).setMaxResults(20).addOrder(Order.asc("id")).setResultTransformer(
+                        Criteria.DISTINCT_ROOT_ENTITY).list();
+        return lista;
+    }
+
+    @Override
+    public int allActiveSizeSoba() {
+        Long l = (Long) session.createCriteria(Soba.class).setProjection(Projections.rowCount()).uniqueResult();
+        return l.intValue();
+    }
+
 }
