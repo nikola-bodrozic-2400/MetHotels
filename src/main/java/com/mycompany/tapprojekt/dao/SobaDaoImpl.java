@@ -16,28 +16,34 @@ import org.hibernate.criterion.Restrictions;
  * @author Nikola
  */
 public class SobaDaoImpl implements SobaDao {
+
     @Inject
     private Session session;
-    
+
     @Override
     public List<Soba> getListaSvihSoba() {
         return session.createCriteria(Soba.class).list();
     }
-    
+
     @Override
     public Soba getSobaById(Integer id) {
         return (Soba) session.createCriteria(Soba.class).add(Restrictions.eq("id", id)).uniqueResult();
 
     }
-    
+
     @Override
     public void dodajSoba(Soba soba) {
         session.persist(soba);
-    }    
-    
+    }
+
     @Override
     public void obrisiSoba(Integer id) {
         Soba soba = (Soba) session.createCriteria(Soba.class).add(Restrictions.eq("id", id)).uniqueResult();
         session.delete(soba);
-    }    
+    }
+
+    @Override
+    public List<Soba> getListaSobaPoImenu(String ime) {
+        return session.createCriteria(Soba.class).add(Restrictions.ilike("imeSobe", ime + "%")).list();
+    }
 }
