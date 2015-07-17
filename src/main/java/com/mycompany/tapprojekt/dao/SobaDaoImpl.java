@@ -65,5 +65,10 @@ public class SobaDaoImpl implements SobaDao {
         Long l = (Long) session.createCriteria(Soba.class).setProjection(Projections.rowCount()).uniqueResult();
         return l.intValue();
     }
+    
+    @Override
+    public Soba dodajIliUpdatujSoba(Soba soba){
+        return (Soba) session.merge(soba);
+    }
 
 }
