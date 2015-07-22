@@ -30,11 +30,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
     @NamedQuery(name = "Konvencije.findAll", query = "SELECT k FROM Konvencije k")})
 public class Konvencije extends AbstractEntity {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @Basic(optional = false)
     @Column(name = "konvencija_ime")
     private String konvencijaIme;
