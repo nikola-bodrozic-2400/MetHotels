@@ -1,15 +1,25 @@
 <html t:type="layout" title="PrviTapestryProjekat com.example"
-xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-xmlns:p="tapestry:parameter">
-<div class="row">
-<div class="span4 offset3">
-<t:beaneditform t:id="form" object="userLogin" submitlabel="Login" exclude="id,rola">
-<t:errors/>
-<p:sifra>
-<t:label for="sifra"/>
-<t:passwordfield t:id="sifra" value="userLogin.sifra"/>
-</p:sifra>
-</t:beaneditform>
-</div>
-</div>
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <div class="row">
+        <div class="span4 offset3">
+            <t:if test="loggedInFb">
+                <script>
+                    window.onload = function(){
+                    location.reload();
+                    } </script>
+            </t:if>
+            <t:beaneditform t:id="form" object="userLogin" submitlabel="Login"
+                exclude="id,rola,facebookId">
+                <t:errors/>
+                <p:sifra>
+                    <t:label for="sifra"/>
+                    <t:passwordfield t:id="sifra" value="userLogin.sifra"/>
+                </p:sifra>
+            </t:beaneditform>
+            <a href="${facebookAuthentificationLink}">
+                <input type="button" class="input2" value="Login with facebook"/>
+            </a>
+        </div>
+    </div>
 </html>

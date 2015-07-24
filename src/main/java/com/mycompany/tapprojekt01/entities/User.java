@@ -25,13 +25,14 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
- * @author student 
+ * @author student
  */
 @Entity
 @Table(name = "user")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")})
 public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,8 +49,18 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "useId")
     private List<Klijent> klijentList;
 
+    @Column(name = "FACEBOOK_ID")
+    private String facebookId;
+
     @Inject
     public User() {
+    }
+
+    public User(String email, String sifra, Role rola, String facebookId) {
+        this.email = email;
+        this.sifra = sifra;
+        this.rola = rola;
+        this.facebookId = facebookId;
     }
 
     public User(Integer id) {
@@ -96,6 +107,14 @@ public class User implements Serializable {
         this.klijentList = klijentList;
     }
 
+    public String getFacebookId() {
+        return facebookId;
+    }
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -120,5 +139,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.mycompany.tapprojekt01.components.User[ id=" + id + " ]";
     }
-    
+
 }
