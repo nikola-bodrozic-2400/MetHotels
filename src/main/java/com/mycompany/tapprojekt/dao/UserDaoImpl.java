@@ -15,7 +15,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author nikola
  */
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     @Inject
     private Session session;
@@ -44,5 +44,14 @@ public class UserDaoImpl implements UserDao{
         Long rows = (Long) session.createCriteria(User.class).add(Restrictions.eq("email",
                 email)).setProjection(Projections.rowCount()).uniqueResult();
         return (rows == 0) ? false : true;
+    }
+
+    @Override
+    public User checkIfFbExists(String id) {
+        try {
+            return (User) session.createCriteria(User.class).add(Restrictions.eq("facebookId", id)).uniqueResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

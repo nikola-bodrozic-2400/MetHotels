@@ -15,4 +15,5 @@ public interface UserDao {
     public User checkUser(String email, String password);
     public User registerUser(User user);
     public boolean checkIfEmailExists(String email);    
+    public User checkIfFbExists(String Id);
 }

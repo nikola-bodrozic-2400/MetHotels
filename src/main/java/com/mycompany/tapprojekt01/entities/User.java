@@ -39,6 +39,10 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
+     @Column(name = "FACEBOOK_ID")
+    private String facebookId;   
+    
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "SIFRA")
@@ -49,8 +53,6 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "useId")
     private List<Klijent> klijentList;
 
-    @Column(name = "FACEBOOK_ID")
-    private String facebookId;
 
     @Inject
     public User() {
