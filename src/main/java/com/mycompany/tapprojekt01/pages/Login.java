@@ -10,6 +10,8 @@ import com.restfb.FacebookClient;
 import java.io.IOException;
 import net.smartam.leeloo.common.exception.OAuthProblemException;
 import net.smartam.leeloo.common.exception.OAuthSystemException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.ActivationRequestParameter;
 import org.apache.tapestry5.annotations.Component;
@@ -25,8 +27,10 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.slf4j.Logger;
+import org.tynamo.security.services.SecurityService;
 
 public class Login {
+
     @Inject
     private UserDao userDao;
     @Property
@@ -35,6 +39,8 @@ public class Login {
     private User loggedInUser;
     @Component
     private BeanEditForm form;
+    @Inject
+    private SecurityService securityService;
     @Inject
     private FacebookService facebookService;
     @SessionState
@@ -79,9 +85,17 @@ public class Login {
         if (u != null) {
             loggedInUser = u;
             System.out.println("Logovan");
+            Subject currentUser = securityService.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(u.getEmail(),
+                    userLogin.getSifra());
+            try {
+                currentUser.login(token);
+            } catch (Exception e) {
+                form.recordError("Uneli ste pogrešne parametre");
+            }
             return Index.class;
         } else {
-            form.recordError("Uneli ste pogrene parametre");
+            form.recordError("Uneli ste pogrešne parametre");
             System.out.println("losi parametri");
             return null;
         }
@@ -94,10 +108,10 @@ public class Login {
     @CommitAfter
     public boolean isLoggedInFb() {
         if (facebookServiceInformation.getAccessToken() != null) {
-            User fbuser = new User(userfb.getEmail(), " ", Role.Korisnik, userfb.getId());
+            User fbuser = new User(userfb.getEmail(), " ", Role.Korisnik,
+                    userfb.getId());
             User exist = null;
             System.out.println("proverava");
-            System.out.println("------------------------"+userfb.getId());
             exist = userDao.checkIfFbExists(userfb.getId());
             if (exist == null) {
                 userDao.registerUser(fbuser);
@@ -110,7 +124,7 @@ public class Login {
         }
         return facebookServiceInformation.getAccessToken() != null;
     }
-    
+
     @SetupRender
     public void setup() throws IOException, OAuthSystemException,
             OAuthProblemException {

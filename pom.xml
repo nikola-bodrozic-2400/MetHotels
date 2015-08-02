@@ -94,16 +94,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.tapestry</groupId>
-            <artifactId>tapestry-hibernate</artifactId>
-            <version>${tapestry-release-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
             <version>2.1.0</version>
@@ -144,19 +134,9 @@
             <version>1.6.11</version>
         </dependency>
         <dependency>
-            <groupId>net.smartam.leeloo</groupId>
-            <artifactId>oauth2-client</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>net.smartam.leeloo</groupId>
-            <artifactId>oauth2-common</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.restfb</groupId>
-            <artifactId>restfb</artifactId>
-            <version>1.6.11</version>
+            <groupId>org.tynamo</groupId>
+            <artifactId>tapestry-security</artifactId>
+            <version>0.6.2</version>
         </dependency>
     </dependencies>
     <build>
